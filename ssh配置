@@ -1,0 +1,12 @@
+ssh配置：
+   Host remote
+   HostName 10.10.10.10
+   User root
+   IdentitiesOnly yes
+   # ssh-copy-id -i id_rsa.pub root@10.10.10.10    这个是给远程主机注册秘钥，然后可以免密登录的命令 ，需要在终端执行
+目录  ~/.ssh/config
+使用  : 
+        ssh remote  登录远程主机
+        scp  本地目录  remote:/root/workspace
+上面是复制到 linux 机器上；
+从linux机器复制到windows上： scp define.c local:D:\\workspace\\loca  注意目录格式  
