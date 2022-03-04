@@ -1,0 +1,45 @@
+fork 与 brance 的区别：https://blog.csdn.net/u012814856/article/details/84590065
+fork 一份代码仓库到本人名下，分支负责不同的版本功能，普通开发人员没有权限创建新的分支；可以在自己的代码仓库里对已有的分支进行更新，然后提出合并请求。
+发起合并请求后需要等流水线都通过才可以；
+
+
+git 
+
+git diff --cached  查看暂存区修改
+git diff 查看工作空间修改
+//git add . 提交所有新增和修改的;不要用！！！
+git add -u  只添加修改的文件， 不添加新文件
+ git status -uno  不看未追逐文件
+ git diff --stat 
+ 
+ git log  查看提交信息
+ git reset --soft HEAD   修改内容本地保留
+ git reset --hard HEAD   修改内容不保留
+ 
+ git remote -v 查看远程仓库
+ git remote add mygmdb ssh://git@root/test.git 添加远程仓库
+ git fetch mygmdb  获取远程仓库信息到本地，但是不合并 （比pull好用的多）
+ git push mygmdb master:master  （-f 强制推送） 
+ git rebase origin/master         变基，把修改置于主干最新之上
+ git push （-f） mygmdb master:master   推到自己的最新分支  必须是 master:master
+ 然后去个人仓库创建合并请求；（假设自己fork了别人的开源库）
+git checkout -b name mygmdb/master  建立基于mygmdb/master的新分支
+git branch -v     查看分支
+ 
+ 需要fetch了另一个参考的信息，然后 合并这个仓库的某个commit
+git cherry-pick 84c1b47053d6801371746b778d654a615674cc3c   只合并某个commit
+
+git reset --soft HEAD^  撤销某个commit  ,回到add的状态到暂存区
+git reset --hard HEAD^ 撤销某个commit，add的也被删除
+
+git show commitID  查看详情
+git commit --amend 追加提交
+git log   
+git rebase -i  <commit_id>   id是想要合并的请求之前的最后一个
+            commit_Id （保留提交日志的前一个commit）
+然后出现   pick .... 保留提交日志
+                   pick....
+                   pick....
+把最后两个  pick  改成  s   
+然后可以选择清除最后两个commit信息。  
+这样就把三个commit  合并在了第一个pick的提交中, 相当于把 commit_Id 后面的三个提交合并成一个提交。
