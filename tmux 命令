@@ -1,0 +1,15 @@
+tmux:
+    tmux new -s mysession 创建新session
+    tmux ls
+    tmux a -t mysession
+    (prefix = Ctrl + B)
+    prefix s 列出会话，可以切换
+    prefix c 一个会话里创建新窗口
+    prefix , 重命名当前窗口
+    prefix w 列出窗口
+    prefix n/p 进入下一个/上一个窗口
+    prefix & 关闭窗口
+    prefix d   退出窗口
+
+service sshd restart
+systemctl restart sshd.service 
