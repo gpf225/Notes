@@ -4,7 +4,7 @@ gdb program_name    gdb启动客户端，
 r --gtest_filter=*.name  跑某个gtest用例
 c （continue）  继续运行，不要r 重新跑
 gdb attach `pidof server`   把服务端加入gdb调试
-handle SIGUSR1 noprint nostop 服务端屏蔽信号
+handle SIGUSR2 noprint nostop 服务端屏蔽信号
 b 打断点，func_server 服务端一般入口；客户端 c 继续跑，服务端断点查看代码
 ctrl x +a  代码窗口
 kill -9 `pidof server`  杀掉程序
